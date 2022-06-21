@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Paragraphs example</title>
+    <style>
+      .first {
+        font-weight: 300;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1.5em;
+        color: blue;
+      }
+
+      .second {
+        font-weight: 500;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 2em;
+        color: green;
+      }
+
+      .third {
+        font-style: italic;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 2.5em;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="paragraphs">
+      <p>This is the 1st paragraph</p>
+      <p>This is the 2nd paragraph</p>
+      <p>This is the 3rd paragraph</p>
+    </div>
+    <div id="buttons">
+      <button id="button1">Apply 1st style</button>
+      <button id="button2">Apply 2nd style</button>
+      <button id="button3" onclick="applyStyle3()">Apply 3d style</button>
+    </div>
+    <script>
+      const button1 = document
+        .getElementById("button1")
+        .addEventListener("click", () => {
+          document.getElementsByTagName("p")[0].className = "first";
+          document.getElementsByTagName("p")[1].className = "first";
+          document.getElementsByTagName("p")[2].className = "first";
+        });
+
+      const button2 = document
+        .getElementById("button2")
+        .addEventListener("click", () => {
+          const elements = document.getElementsByTagName("p");
+          for (index in elements) {
+            elements[index].className = "second";
+          }
+        });
+
+      function applyStyle3() {
+        const elements = Array.from(document.getElementsByTagName("p"));
+        elements.forEach((elem) => {
+          elem.className = "third";
+        });
+      }
+    </script>
+  </body>
+</html>

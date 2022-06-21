@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <title>Chess</title>
+    <style type="text/css">
+      div#chess {
+        width: 48em; /* 8 celdas x 6 em = 48em */
+        margin: auto; /* centrar */
+        border: 0.25em solid black; /* borde */
+      }
+
+      div.odd,
+      div.even {
+        word-spacing: -1em; /* quitar espacio entre cuadrados a nivel de columna */
+        height: 6em; /* quitar espacio entre cuadrados a nivel de fila */
+      }
+
+      div.odd div {
+        display: inline-block; /* bloques en linea */
+        background: black;
+        width: 6em; /* que ocupen 6 x 6 negras */
+        height: 6em;
+        margin-right: 6em; /* margen a la derecha de 6em (blancas) */
+      }
+
+      div.even div {
+        display: inline-block; /* bloques en linea */
+        background: black;
+        width: 6em; /* que ocupen 6 x 6 em negras */
+        height: 6em;
+        margin-left: 6em; /* margen a la izquierda de 6em (blancas) */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="chess">
+      <div class="odd">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="even">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="odd">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="even">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="odd">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="even">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="odd">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="even">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </body>
+</html>
