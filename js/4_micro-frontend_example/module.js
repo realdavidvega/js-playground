@@ -1,13 +1,16 @@
-const iframe = document.querySelector('iframe');
-iframe.contentWindow.addEventListener("message", (event) => {
-    const { name } = event.data || {data: {name: undefined}};
-    if (name === 'micro-frontend') {
-        const div = document.createElement('div');
-        div.innerText = 'Got information from micro-frontend!';
-        document.body.appendChild(div);
-    }
-}, false);
+const micros = Array.from(document.getElementsByTagName('iframe'));
+
+micros.forEach(micro => {
+    micro.contentWindow.addEventListener("message", ({data}) => {
+        const {name = ''} = data;
+        if (name.includes('micro')) {
+            const div = document.createElement('div');
+            div.innerText = 'Got information from micro!';
+            document.body.appendChild(div);
+        }
+    }, false);
+});
 
 document.querySelector('button').addEventListener('click', () => {
-    iframe.contentWindow.postMessage({name: 'parent'});
+    micros.forEach(micro => micro.contentWindow.postMessage({name: 'parent'}));
 });
