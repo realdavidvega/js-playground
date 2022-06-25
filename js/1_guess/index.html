@@ -3,6 +3,7 @@
       <title>Guess the number!</title>
   </head>
   <body>
+    <button id="button" onclick="generateNumbers()">Generate</button>
     <script>
       let guess = 0;
       const rand = Math.floor(Math.random() * 10) + 1;
@@ -17,8 +18,18 @@
           window.alert("You have guessed the number! Hooray!");
           break;
         }
-        
         window.alert("Please, try again");
+      }
+
+      function generateNumbers() {
+        const max = 10;
+        const min = 1;
+        const num1 = Math.floor(
+                Math.random()*(max-min)+min
+        );
+        const p = document.createElement('p');
+        p.innerText = 'The number is: ' + num1;
+        document.body.appendChild(p);
       }
     </script>
   </body>
