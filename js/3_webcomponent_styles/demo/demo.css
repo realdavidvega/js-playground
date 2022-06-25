@@ -21,8 +21,6 @@ icon-button::part(button) {
     justify-content: center;
     transition-duration: 0.4s;
     cursor: pointer;
-    width: 100px;
-    height: 50px;
 }
 
 icon-button::part(text) {
