@@ -9,5 +9,5 @@ window.addEventListener("message", (event) => {
 
 
 document.querySelector('button').addEventListener('click', () => {
-    window.postMessage({name: 'micro 2'});
+    window.postMessage({name: 'MFE-2'});
 });
