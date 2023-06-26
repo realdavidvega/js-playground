@@ -1,0 +1,16 @@
+{
+  "name": "weather-widget",
+  "version": "1.0.0",
+  "description": "",
+  "main": "weather-widget.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "regenerator src dist && polymer serve"
+  },
+  "author": "David Vega Lichacz",
+  "license": "ISC",
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.3.0",
+    "lit-element": "^2.2.1"
+  }
+}
