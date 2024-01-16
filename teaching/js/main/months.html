@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Months</title>
+</head>
+<body>
+<script>
+    function getMessage(userInput) {
+        if (userInput >= 1 && userInput <= 12) {
+            const daysInMonth = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+            return "There are " + daysInMonth[userInput] + " days in month."
+        } else {
+            return "Error: Invalid input. Please enter a number between 1 and 12."
+        }
+    }
+
+    // Requesting user input using prompt
+    const userInput = prompt("Please enter some data:")
+
+    // Get the resulting message (number of days in month or error message)
+    const message = getMessage(userInput)
+
+    // Displaying the user input
+    alert(message)
+</script>
+
+</body>
+</html>

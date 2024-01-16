@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/materialicons/v130/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+}
+
+icon-button::part(icon) {
+    font-family: 'Material Icons', serif;
+    font-size: 16px;
+    margin-right: 1rem;
+}
+
+icon-button::part(button) {
+    background-color: white;
+    border: 2px solid #4CAF50;
+    color: black;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+icon-button::part(text) {
+    font-size: 16px;
+}
+
+icon-button::part(button):hover {
+    background-color: #4CAF50;
+    color: white;
+}

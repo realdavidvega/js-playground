@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Numbers</title>
+</head>
+<body>
+<!-- Buttons to call myAdd, mySubtract, myMultiply, and myPow functions -->
+<button onclick="myAdd()">Add</button>
+<button onclick="mySubtract()">Subtract</button>
+<button onclick="myMultiply()">Multiply</button>
+<button onclick="myPow()">Pow</button>
+
+<script>
+  // Add the two numbers entered by the user
+  function myAdd() {
+    alert(number1 + number2)
+  }
+
+  // Subtract the second number from the first
+  function mySubtract() {
+    alert(number1 - number2)
+  }
+
+  // Multiply the two numbers
+  function myMultiply() {
+    alert(number1 * number2)
+  }
+
+  // Raise the first number to the power of the second
+  function myPow() {
+    alert(number1 ** number2)
+  }
+
+  // Request two numbers, we translate the numbers to integers
+  const number1 = parseInt(prompt("Enter a number"))
+  const number2 = parseInt(prompt("Enter another number"))
+</script>
+
+</body>
+</html>
