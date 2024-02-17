@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+    <h1>Text Box</h1>
+    <textarea name="colors" id="colors"></textarea>
+<script>
+    const textArea = document.getElementById("colors")
+
+    // This code changes the background color of a text area to blue when a key is pressed.
+    textArea.onkeydown = (e) => {
+        e.currentTarget.style.backgroundColor = 'blue'
+    }
+
+    // Change the background color of the text area on keyup
+    textArea.onkeyup = (e) => {
+        e.currentTarget.style.backgroundColor = 'red'
+    }
+</script>
+</body>
+</html>

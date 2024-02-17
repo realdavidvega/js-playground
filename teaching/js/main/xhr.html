@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XHR</title>
+    <style>
+        /* Center all content */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Style for the countries */
+        #countries {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            background-color: #ffffff;
+            color: #3498db;
+            cursor: pointer;
+        }
+
+        #countries:hover {
+            background-color: #3498db;
+            color: #ffffff;
+        }
+
+        /* Style for the cities */
+        #cities {
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #citiesList {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #citiesList li {
+            background-color: #ffd9e6;
+            padding: 5px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        #citiesList li:hover {
+            background-color: #ff85a2;
+            color: #ffffff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <select id="countries">
+        <option value="" selected>Select a country</option>
+        <option value="Spain">Spain</option>
+        <option value="México">México</option>
+        <option value="Venezuela">Venezuela</option>
+    </select>
+
+    <div id="cities">
+        <h2>Cities of:</h2>
+        <ul id="citiesList">
+            There is no country selected
+        </ul>
+    </div>
+</div>
+<script>
+    // We create a function that takes as argument the name of a country
+    // And makes the request to the countries.json
+    const doCities = (countryName) => {
+        // An XMLHttpRequest object is created
+        const xhr = new XMLHttpRequest();
+
+        // We indicate the URL of the countries.json
+        const url = './resources/countries.json';
+
+        // We open the connection
+        xhr.open('GET', url, true);
+
+        // We create an event handler that will listen for the response
+        xhr.onload = () => {
+            // When the response is status 200
+            if (xhr.status === 200) {
+
+                // Parse the response
+                const data = JSON.parse(xhr.responseText);
+
+                // We iterate over the list of countries
+                data.countries.country.forEach(country => {
+                    // We check that the name of the country is the same as the one passed
+                    if (country.name === countryName) {
+                        // If the country is the selected we first clean the list
+                        const cities = document.getElementById('citiesList');
+                        cities.innerHTML = ''
+
+                        // We get the list of cities, and we add them to the list
+                        country.cities.forEach(city => {
+                            // We create an element li
+                            const el = document.createElement("li")
+
+                            // We assign the value of the city
+                            el.innerHTML = city
+
+                            // We add the element to the list
+                            cities.appendChild(el)
+                        })
+                    }
+                })
+            } else { // If the status is not 200
+                console.error('Error while fetching: ' + xhr.status);
+            }
+        };
+
+        // We send the request
+        xhr.send();
+    }
+
+    // We create an event handler that will listen for the change of the country
+    document.getElementById('countries').onchange = (e) => {
+        // We obtain the value of the country
+        const city = e.currentTarget.value
+
+        // If the value is not empty, we call the doCities function
+        if (city !== "") {
+            doCities(city)
+        } else { // If is empty, we clean the list
+            const cities = document.getElementById('citiesList');
+            // We clean the list
+            cities.innerHTML = 'There is no country selected'
+        }
+    }
+</script>
+
+</body>
+</html>

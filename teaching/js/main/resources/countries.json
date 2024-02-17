@@ -1,0 +1,50 @@
+{
+    "countries": {
+      "country": [
+        {
+          "name": "Spain",
+          "capital": "Madrid",
+          "capitalText": "Best capital of the world",
+          "cities": [
+            "Madrid",
+            "Barcelona",
+            "Valencia",
+            "Sevilla",
+            "Zaragoza",
+            "Málaga",
+            "Murcia"
+          ]
+        },
+        {
+          "name": "México",
+          "capital": "México D.F.",
+          "capitalText": "The capital of the state of México is the city of México D.F.",
+          "cities": [
+            "México D.F.",
+            "Ecatepec",
+            "Guadalajara",
+            "Puebla",
+            "Juárez",
+            "Tijuana",
+            "León",
+            "Zapopan"
+          ]
+        }, 
+        {
+            "name": "Venezuela",
+            "capital": "Caracas",
+            "capitalText": "Caracas, officially Santiago de León de Caracas, is the capital of Venezuela.",
+            "cities": [
+              "Caracas",
+              "Maracaibo",
+              "Valencia",
+              "Barquisimeto",
+              "Maracay",
+              "Ciudad Guayana",
+              "San Cristóbal",
+              "Barinas"
+            ]
+          }
+      ]
+    }
+  }
