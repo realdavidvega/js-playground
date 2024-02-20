@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #tasks {
+            padding: 0;
+        }
+
+        .todo-item {
+            display: block;
+            margin-bottom: 0.3125rem;
+        }
+
+        .todo-input {
+            border: 0.0625rem solid #000;
+            padding: 0.1875rem;
+            margin-right: 0.25rem;
+        }
+
+        .delete-btn {
+            background-color: #ff5252;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.625rem;
+            cursor: pointer;
+        }
+
+        .primary-btn {
+            background-color: #6352ff;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.625rem;
+            cursor: pointer;
+        }
+
+        .secondary-btn {
+            background-color: #529dff;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.625rem;
+            cursor: pointer;
+        }
+
+        .ternary-btn {
+            background-color: #52d7ff;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.625rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1 id="title">To-Do List</h1>
+<ul id="tasks"></ul>
+<p>
+    <button class="primary-btn" onclick="createTask()">Add</button>
+    <button class="delete-btn" onclick="clearTasks()">Remove All</button>
+</p>
+<p>
+    <button class="secondary-btn" onclick="sortByTitle('asc')">Sort by Title Asc</button>
+    <button class="ternary-btn" onclick="sortByTitle()">Sort by Title Desc</button>
+</p>
+
+<script>
+    const sortByTitle = (order) => {
+        const tasks = document.getElementById("tasks");
+        const taskList = Array.from(tasks.children).sort((a, b) => {
+            if (order === "asc") {
+                return a.children[0].value.localeCompare(b.children[0].value);
+            } else {
+                return b.children[0].value.localeCompare(a.children[0].value);
+            }
+        });
+        tasks.innerHTML = "";
+        taskList.forEach(task => tasks.appendChild(task));
+    }
+
+    const removeTask = (e) => {
+        const tasks = document.getElementById("tasks");
+        const task = e.currentTarget.parentNode;
+        tasks.removeChild(task);
+    }
+
+    const clearTasks = () => {
+        const tasks = document.getElementById("tasks");
+        tasks.innerHTML = "";
+    }
+
+    const createTask = () => {
+        const tasks = document.getElementById("tasks");
+
+        const task = document.createElement("li");
+        task.classList.add("todo-item");
+
+        const input = document.createElement("input");
+        input.classList.add("todo-input");
+        input.type = "text";
+        task.appendChild(input);
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Remove";
+        deleteButton.classList.add("delete-btn");
+        deleteButton.onclick = removeTask;
+        task.appendChild(deleteButton);
+
+        tasks.appendChild(task);
+    }
+</script>
+</body>
+</html>
