@@ -2,9 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Exercise Timer</title>
 </head>
 <body>
-$END$
+<h1>Exercise Timer</h1>
+<h2 id="timer">00:00:00:00</h2>
+<button id="start" onclick="start()">Start</button>
+<button id="stop" onclick="stop()" disabled>Stop</button>
+<button id="reset" onclick="reset()" disabled>Clear</button>
+<button id="finish" onclick="finish()" disabled>Finish</button>
+<script>
+  let startTime;
+  let interval;
+  let elapsedTime = 0;
+  let running = false;
+
+  const start = () => {
+    if (!running) {
+      startTime = Date.now() - elapsedTime;
+      interval = setInterval(updateTimer, 10);
+      running = true;
+      document.getElementById("start").disabled = true;
+      document.getElementById("stop").disabled = false;
+      document.getElementById("reset").disabled = true;
+      document.getElementById("finish").disabled = true;
+    }
+  }
+
+  const stop = () => {
+    if (running) {
+      clearInterval(interval);
+      running = false;
+      document.getElementById("start").disabled = false;
+      document.getElementById("stop").disabled = true;
+      document.getElementById("reset").disabled = false;
+      document.getElementById("finish").disabled = false;
+    }
+  }
+
+  const reset = () => {
+    clearInterval(interval);
+    resetTimer();
+    document.getElementById("start").disabled = false;
+    document.getElementById("stop").disabled = true;
+    document.getElementById("reset").disabled = true;
+    document.getElementById("finish").disabled = true;
+  }
+
+  const finish = () => {
+    const time = document.getElementById("timer").innerHTML;
+    alert(`Has finalizado tu ejercicio en ${time}`);
+  }
+
+  const setTimer = (time) => {
+    let milliseconds = Math.floor((time % 1000) / 10);
+    let seconds = Math.floor((time / 1000) % 60);
+    let minutes = Math.floor((time / (1000 * 60)) % 60);
+    let hours = Math.floor(time / (1000 * 60 * 60));
+
+    const timer = pad(hours) + ":" + pad(minutes) + ":" + pad(seconds) + ":" + padMs(milliseconds);
+    document.getElementById("timer").textContent = timer
+  }
+
+  const updateTimer = () => {
+    let currentTime = Date.now();
+    elapsedTime = currentTime - startTime;
+    setTimer(elapsedTime);
+  }
+
+  const resetTimer = () => {
+    clearInterval(interval);
+    elapsedTime = 0;
+    setTimer(0);
+    running = false;
+  }
+
+  function pad(num) {
+    return num.toString().padStart(2, "0");
+  }
+
+  function padMs(num) {
+    return num.toString().padStart(2, "0").slice(0, 2);
+  }
+</script>
 </body>
 </html>
