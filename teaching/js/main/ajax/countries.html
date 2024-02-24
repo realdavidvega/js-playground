@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>XHR</title>
+    <title>Countries</title>
     <style>
         /* Center all content */
         .container {
@@ -77,18 +77,18 @@
         const xhr = new XMLHttpRequest();
 
         // We indicate the URL of the countries.json
-        const url = './resources/countries.json';
+        const url = '../resources/countries.json';
 
         // We open the connection
-        xhr.open('GET', url, true);
+        countries.open('GET', url, true);
 
         // We create an event handler that will listen for the response
-        xhr.onload = () => {
+        countries.onload = () => {
             // When the response is status 200
-            if (xhr.status === 200) {
+            if (countries.status === 200) {
 
                 // Parse the response
-                const data = JSON.parse(xhr.responseText);
+                const data = JSON.parse(countries.responseText);
 
                 // We iterate over the list of countries
                 data.countries.country.forEach(country => {
@@ -112,12 +112,12 @@
                     }
                 })
             } else { // If the status is not 200
-                console.error('Error while fetching: ' + xhr.status);
+                console.error('Error while fetching: ' + countries.status);
             }
         };
 
         // We send the request
-        xhr.send();
+        countries.send();
     }
 
     // We create an event handler that will listen for the change of the country
