@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shows</title>
+</head>
+<body>
+<h1>TV Show Search</h1>
+<p>Please, enter a show name to retrieve its summary</p>
+<input type="text" name="search" id="input">
+<button id="submit" onclick="performSearch()">Search</button>
+<div id="show"></div>
+
+<script>
+    const performSearch = () => {
+        const input = document.getElementById('input').value;
+        fetch(`https://api.tvmaze.com/search/shows?q=${input}`)
+            .then(response => response.json())
+            .then(data => {
+                const show = data[0].show;
+                cleanShowElem()
+                createShowElem(show)
+            })
+    }
+
+    const cleanShowElem = () => {
+        const movieElem = document.getElementById("show")
+        movieElem.innerHTML = ""
+    }
+
+    const createShowElem = (show) => {
+        const name = document.createElement("h2")
+        name.innerHTML = show.name;
+
+        const rating = document.createElement("h4")
+        rating.innerHTML = "Rating: " + show.rating.average;
+
+        const summary = document.createElement("div")
+        summary.innerHTML = show.summary;
+
+        const showElem = document.getElementById("show")
+        showElem.appendChild(name);
+        showElem.appendChild(rating);
+        showElem.appendChild(summary);
+    }
+</script>
+</body>
+</html>
