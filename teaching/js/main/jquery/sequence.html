@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remember the sequence!</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: dodgerblue;
+            margin: 20px;
+            display: inline-block;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<h1>Remember and guess the sequence!</h1>
+<div class="box" id="box1">1</div>
+<div class="box" id="box2">2</div>
+<div class="box" id="box3">3</div>
+<div class="box" id="box4">4</div>
+
+<h3 id="sequence"></h3>
+<br>
+<button onclick="showSequence()">Play!</button>
+
+<script>
+    let sequence = shuffleArray([1, 2, 3, 4]);
+    let currentIndex = 0;
+
+    function showSequence() {
+        const sequenceElement = document.getElementById('sequence');
+
+        sequenceElement.innerHTML = "The sequence is: " + sequence.join(', ');
+        setTimeout(() => {
+            sequenceElement.innerHTML = "";
+        }, 1000)
+    }
+
+    function shuffleArray(array) {
+        return array.sort(() => Math.random() - 0.5);
+    }
+
+    $(document).ready(function () {
+        $(".box").hover(function () {
+            $(this).css("background-color", "darkblue");
+        }, function () {
+            $(this).css("background-color", "#007bff");
+        });
+
+        $(".box").click(function () {
+            const boxId = $(this).attr('id').replace('box', '');
+            $(this).fadeOut(200).fadeIn(200);
+            checkClick(boxId);
+        });
+
+        function checkClick(boxId) {
+            if (parseInt(boxId) === sequence[currentIndex]) {
+                currentIndex++;
+                if (currentIndex === sequence.length) {
+                    alert("Congratulations! You won!");
+                    currentIndex = 0;
+                    sequence = shuffleArray(sequence);
+                }
+            } else {
+                alert("Oops, the box sequence is incorrect! Try again.");
+                currentIndex = 0;
+                showSequence();
+            }
+        }
+    });
+</script>
+</body>
+</html>
