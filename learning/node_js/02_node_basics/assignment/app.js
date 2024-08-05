@@ -48,7 +48,6 @@ const requestHandler = (req, res) => {
     req.on('end', () => {
       const parsedBody = Buffer.concat(body).toString()
       console.log(parsedBody.split('=')[1])
-      
     })
 
     res.statusCode = 302
