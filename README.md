@@ -1,8 +1,12 @@
 # JS Playground Monorepo
 
+Playground for random JS/TS code, learning and exercises
+
 ## Learning
 
 1. NodeJS: Code and exercises for learning NodeJS, GraphQL, Deno...
+2. React: Code and exercises for learning React
+3. NextJS: Code and exercises for learning Next.js
 
 ## Code
 
